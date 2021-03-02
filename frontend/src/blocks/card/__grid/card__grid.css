@@ -1,0 +1,8 @@
+.card__grid {
+    background: #fff;
+    border-radius: 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+}

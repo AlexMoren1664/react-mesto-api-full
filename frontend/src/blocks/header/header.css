@@ -1,0 +1,28 @@
+@import url(./__logo/header__logo.css);
+@import url(./__login/header__login.css);
+@import url(./__container/header__container.css);
+@import url(./__user/header__user.css);
+
+
+.header {
+    padding: 45px 0 0;
+    max-width: 69%;
+    margin: 0 auto;
+    border-bottom: 1px solid rgba(84, 84, 84, .7);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media (max-width: 850px) {
+    .header {
+        max-width: 89.5%;
+        padding-top: 28px;
+    }
+}
+@media (max-width: 320px) {
+    .header {
+        max-width: 100%;
+        padding-left: 27px;
+    }
+}

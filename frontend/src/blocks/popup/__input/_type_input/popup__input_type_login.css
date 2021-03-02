@@ -1,0 +1,7 @@
+.popup__input_type_login {
+    width: 100%; 
+    border-bottom: 2px solid rgba(204, 204, 204, 1);
+    background-color: rgba(0, 0, 0, 0);
+    color: #CCCCCC;
+    padding-top: 30px;
+}

@@ -1,0 +1,28 @@
+@import url(./__grid/card__grid.css);
+@import url(./__img/card__img.css);
+@import url(./__item/card__item.css);
+@import url(./__heading/card__heading.css);
+@import url(./__like/card__like.css);
+@import url(./__delete/card__delete.css);
+@import url(./__counter/card__counter.css);
+@import url(./__like-counter/card__like-counter.css);
+
+.card {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 18px;
+    column-gap: 21px;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+@media (max-width: 570px) {
+    .card {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 380px) {
+    .card {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

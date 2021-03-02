@@ -1,0 +1,18 @@
+.profile__button {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-image: url(../../../images/vector-pen.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0);
+    border: 0;
+    opacity: 0;
+    outline: 0;
+    cursor: pointer;
+}
+
+.profile__button:hover {
+    transition: .5s linear;
+    opacity: 1;
+}

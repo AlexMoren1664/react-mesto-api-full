@@ -1,0 +1,18 @@
+.header__login {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: right;
+    background-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+    border: 0;
+    color: #fff;
+    outline: 0;
+    text-decoration: none
+}
+.header__login:hover {
+    opacity: .6;
+    transition: 1s linear;
+}

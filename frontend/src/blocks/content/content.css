@@ -1,0 +1,10 @@
+.content {
+    max-width: 69%;
+    margin: 0 auto;
+}
+
+@media (max-width: 850px) {
+    .content {
+        max-width: 89.5%;
+    }
+}

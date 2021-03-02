@@ -1,0 +1,17 @@
+.profile__cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0);
+    width: 120px;
+    height: 120px;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.profile__cover:hover {
+    transition: .5s linear;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 50%;
+}

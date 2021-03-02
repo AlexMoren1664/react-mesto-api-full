@@ -1,0 +1,21 @@
+/*@import url(./_type_img/popup__close_type_img.css);*/
+
+.popup__close {
+    position: absolute;
+    right: -41px;
+    top: -38px;
+    border: 0;
+    font-size: 34px;
+    background-image: url(../../../images/icon-close.svg);
+    background-position: 0%;
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0);
+    min-width: 41px;
+    min-height: 41px;
+    box-sizing: border-box;
+    outline: 0;
+}
+
+.popup__close:hover {
+opacity: .6;
+}

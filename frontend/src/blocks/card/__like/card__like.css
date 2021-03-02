@@ -1,0 +1,17 @@
+@import url(./_active/card__like_active.css);
+.card__like {
+    background-image: url(../../../images/vector-like.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0);
+    border: 0;
+    width: 28px;
+    height: 28px;
+    box-sizing: border-box;
+    outline: 0;
+    cursor: pointer;
+}
+.card__like:hover {
+    opacity: .6;
+    transition: 1s linear;
+}

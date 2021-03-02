@@ -1,0 +1,34 @@
+@import url(./__form/popup__form.css);
+@import url(./__close/popup__close.css);
+@import url(./__title/popup__title.css);
+@import url(./__input/popup__input.css);
+@import url(./__button/popup__button.css);
+@import url(./__content/popup__content.css);
+@import url(./__img/popup__img.css);
+@import url(./__img-title/popup__img-title.css);
+@import url(./__form/_type_login/popup__form_type_login.css);
+@import url(./__input/_type_input/popup__input_type_login.css);
+@import url(./__title/_type_title/popup__title_type_login.css);
+@import url(./__button/_type_login/popup__button_type_login.css);
+@import url(./__link/popup__link.css);
+@import url(./__img/_type_hint/popup__img_type_hint.css);
+@import url(./__form/_type_hint/popup__form_type_hint.css);
+@import url(./__title/_type_hint/popup__title_type_hint.css);
+
+.popup {
+    font-family: 'Inter', ‘Arial’, sans-serif;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100vw;
+    display: flex;/*none*/
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility .5s, opacity .5s linear;
+}
