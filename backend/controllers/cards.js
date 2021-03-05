@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const BadRequest = require('../errors/BadRequest');
 const Forbidden = require('../errors/Conflict');
 const NotFound = require('../errors/NotFound');
@@ -32,6 +33,9 @@ const createCard = (req, res, next) => {
 
 const deleteCard = (req, res, next) => {
   Card.findById(req.params.cardId)
+    .orFail(() => {
+      throw new Error('404');
+    })
     .then((cardId) => {
       if (cardId.owner.toString() !== req.user._id) {
         throw new Forbidden('Нельзя удалить чужую карточку');
@@ -42,6 +46,12 @@ const deleteCard = (req, res, next) => {
         });
     })
     .catch((err) => {
+      if (err.message === '404') {
+        throw new NotFound('Карточка не найдена');
+      }
+      if (err instanceof mongoose.CastError) {
+        throw new BadRequest('Запрос не был обработан, неверные данные');
+      }
       next(err);
     });
 };
@@ -49,26 +59,38 @@ const deleteCard = (req, res, next) => {
 const likeCard = (req, res, next) => {
   Card.findByIdAndUpdate(req.params.cardId,
     { $addToSet: { likes: req.user._id } }, { new: true })
+    .orFail(() => {
+      throw new Error('404');
+    })
     .then((card) => {
-      if (!card) {
-        throw new BadRequest('Запрос не был обработан, неверные данные');
-      }
       res.send(card);
     })
     .catch((err) => {
+      if (err.message === '404') {
+        throw new NotFound('Карточка не найдена');
+      }
+      if (err instanceof mongoose.CastError) {
+        throw new BadRequest('Запрос не был обработан, неверные данные');
+      }
       next(err);
     });
 };
 
 const dislikeCard = (req, res, next) => {
   Card.findByIdAndUpdate(req.params.cardId, { $pull: { likes: req.user._id } }, { new: true })
+    .orFail(() => {
+      throw new Error('404');
+    })
     .then((like) => {
-      if (!like) {
-        throw new BadRequest('Запрос не был обработан, неверные данные');
-      }
       res.send(like);
     })
     .catch((err) => {
+      if (err.message === '404') {
+        throw new NotFound('Карточка не найдена');
+      }
+      if (err instanceof mongoose.CastError) {
+        throw new BadRequest('Запрос не был обработан, неверные данные');
+      }
       next(err);
     });
 };

@@ -14,6 +14,7 @@ const usersRouter = require('./routes/users');
 const cardsRouter = require('./routes/cards');
 const auth = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const NotFound = require('./errors/NotFound');
 
 app.use(cors());
 
@@ -26,7 +27,7 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 mongoose.connection.on('open', () => console.log('db connect'));
 
 app.use(bodyParser.json());
-const { PORT = 3000 } = process.env;
+const { PORT = 3002 } = process.env;
 
 app.post('/signup', celebrate({
   body: Joi.object().keys({
@@ -39,6 +40,9 @@ app.post('/signin', celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email(),
     password: Joi.string().required().min(8),
+    name: Joi.string().default('Жак-Ив Кусто').min(2).max(30),
+    about: Joi.string().default('Исследователь').min(2).max(30),
+    avatar: Joi.string().pattern(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/),
   }),
 }), controllers.login);
 
@@ -57,8 +61,9 @@ app.use(errorLogger);
 
 app.use(errors());
 
+// eslint-disable-next-line no-unused-vars
 app.use('*', (req, res) => {
-  res.status(404).send({ message: 'Запрашиваемый ресурс не найден' });
+  throw new NotFound('Запрашиваемый ресурс не найден');
 });
 
 app.use((err, req, res, next) => {
