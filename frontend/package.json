@@ -16,7 +16,7 @@
     "start": "react-scripts start",
     "start-pc": "set PORT=3001&& react-scripts start",
     "build": "react-scripts build",
-    "deploy": "npm run build && scp -r ./build/* path2@84.201.140.34:/home/path2/react-mesto-api-full/news-frontend",
+    "deploy": "npm run build && scp -r ./build/* mesto@84.201.174.112:/home/mesto/react-mesto-api-full/news-frontend",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
