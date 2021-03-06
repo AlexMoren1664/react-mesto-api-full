@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const BadRequest = require('../errors/BadRequest');
-const Forbidden = require('../errors/Conflict');
+const Forbidden = require('../errors/Forbidden');
 const NotFound = require('../errors/NotFound');
 const Card = require('../models/card');
 
