@@ -34,7 +34,7 @@ const createCard = (req, res, next) => {
 const deleteCard = (req, res, next) => {
   Card.findById(req.params.cardId)
     .orFail(() => {
-      throw new Error('404');
+      throw new NotFound('Карточка не найдена');
     })
     .then((cardId) => {
       if (cardId.owner.toString() !== req.user._id) {
@@ -46,9 +46,6 @@ const deleteCard = (req, res, next) => {
         });
     })
     .catch((err) => {
-      if (err.message === '404') {
-        throw new NotFound('Карточка не найдена');
-      }
       if (err instanceof mongoose.CastError) {
         throw new BadRequest('Запрос не был обработан, неверные данные');
       }
@@ -60,15 +57,12 @@ const likeCard = (req, res, next) => {
   Card.findByIdAndUpdate(req.params.cardId,
     { $addToSet: { likes: req.user._id } }, { new: true })
     .orFail(() => {
-      throw new Error('404');
+      throw new NotFound('Карточка не найдена');
     })
     .then((card) => {
       res.send(card);
     })
     .catch((err) => {
-      if (err.message === '404') {
-        throw new NotFound('Карточка не найдена');
-      }
       if (err instanceof mongoose.CastError) {
         throw new BadRequest('Запрос не был обработан, неверные данные');
       }
@@ -79,15 +73,12 @@ const likeCard = (req, res, next) => {
 const dislikeCard = (req, res, next) => {
   Card.findByIdAndUpdate(req.params.cardId, { $pull: { likes: req.user._id } }, { new: true })
     .orFail(() => {
-      throw new Error('404');
+      throw new NotFound('Карточка не найдена');
     })
     .then((like) => {
       res.send(like);
     })
     .catch((err) => {
-      if (err.message === '404') {
-        throw new NotFound('Карточка не найдена');
-      }
       if (err instanceof mongoose.CastError) {
         throw new BadRequest('Запрос не был обработан, неверные данные');
       }

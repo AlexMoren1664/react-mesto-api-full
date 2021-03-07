@@ -33,6 +33,9 @@ app.post('/signup', celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email(),
     password: Joi.string().required().min(8),
+    name: Joi.string().default('Жак-Ив Кусто').min(2).max(30),
+    about: Joi.string().default('Исследователь').min(2).max(30),
+    avatar: Joi.string().pattern(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/),
   }),
 }), controllers.createUser);
 
@@ -40,9 +43,6 @@ app.post('/signin', celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email(),
     password: Joi.string().required().min(8),
-    name: Joi.string().default('Жак-Ив Кусто').min(2).max(30),
-    about: Joi.string().default('Исследователь').min(2).max(30),
-    avatar: Joi.string().pattern(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/),
   }),
 }), controllers.login);
 
